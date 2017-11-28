@@ -1,6 +1,6 @@
 # Macro Tracker
 
-This is app is a macro diary.  Try the live demo [here!](https://macro-tracker-do917.herokuapp.com/)
+This is app is a macro diary.  This was built with React and Redux.  Try the live demo [here!](https://macro-tracker-do917.herokuapp.com/)
 
 ## To Install
 ```

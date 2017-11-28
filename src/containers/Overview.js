@@ -4,22 +4,28 @@ import modules from '../modules';
 import './overview.css';
 
 const {
-  calendar,
   logger,
   summary,
+  calendar,
 } = modules;
 
-const { Calendar } = calendar;
 const { Logger } = logger;
 const { Summary } = summary;
+const { Calendar } = calendar;
 
 class Overview extends React.Component {
   render() {
     return (
       <div className="overview">
-        <Calendar />
-        <Logger />
-        <Summary />
+        <div className="calendar center">
+          <Calendar />
+        </div>
+        <div className="logger center">
+          <Logger />
+        </div>
+        <div className="summary center">
+          <Summary />
+        </div>
       </div>
     );
   }

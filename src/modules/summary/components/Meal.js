@@ -20,7 +20,7 @@ const Meal = ({ title, mealEntries, onDelete }) => {
                 <th style={{ width: '35%'}}>
                   food
                 </th>
-                <th style={{ width: '20%'}}>
+                <th style={{ width: '15%'}}>
                   kcal
                 </th>
                 <th style={{ width: '15%'}}>
@@ -31,6 +31,8 @@ const Meal = ({ title, mealEntries, onDelete }) => {
                 </th>
                 <th style={{ width: '15%'}}>
                   protein
+                </th>
+                <th style={{ width: '5%'}}>
                 </th>
               </tr>
             </thead>

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import _ from 'lodash';
 import './summary.css';
-import actions from './actions'
+import actions from './actions';
 import components from './components';
 
 const { Meal } = components;
@@ -12,18 +12,18 @@ const { Meal } = components;
 class SummaryModule extends React.Component {
   render() {
     const {
-      selectedDate,
       summary,
       deleteEntry,
+      selectedDate,
     } = this.props;
     const dateInText = moment(selectedDate, 'YYYYMMDD').format('MMMM Do, YYYY');
     const summaries = summary.data[selectedDate] || {};
     const meals = ['breakfast', 'lunch', 'dinner', 'snacks'];
     const foods = _.flatten(meals.map((m) => summaries[m] || []));
     const calories = foods.reduce((t, f) => t + f.calories, 0);
-    
+
     return (
-      <div className="module summary-module">
+      <div className="module">
         <h3>REVIEW SUMMARY</h3>
         <div className="summary-overview">
           <h4>{dateInText}</h4>
@@ -43,8 +43,8 @@ class SummaryModule extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  selectedDate: state.calendar.selectedDate,
   summary: state.summary,
+  selectedDate: state.calendar.selectedDate,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -52,9 +52,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 SummaryModule.propTypes = {
-  selectedDate: PropTypes.string.isRequired,
   summary: PropTypes.object.isRequired,
   deleteEntry: PropTypes.func.isRequired,
+  selectedDate: PropTypes.string.isRequired,
 };
 
 const Summary = connect(

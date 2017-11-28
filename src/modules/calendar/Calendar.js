@@ -18,9 +18,9 @@ class CalendarModule extends React.Component {
     const { updateSelectedDate } = this.props;
 
     return (
-      <div className="module calendar-module">
+      <div className="module">
         <h3>SELECT DATE</h3>
-        <div className="calendar">
+        <div className="calendar-display">
           <RcCalendar          
             showDateInput={false}
             showToday={false}
@@ -44,7 +44,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 CalendarModule.propTypes = {
   updateSelectedDate: PropTypes.func.isRequired,
-  selectedDate: PropTypes.string.isRequired,
 };
 
 const Calendar = connect(

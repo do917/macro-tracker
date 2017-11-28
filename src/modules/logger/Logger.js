@@ -4,39 +4,39 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import {
   Button,
+  MenuItem,
   FormGroup,
+  InputGroup,
   FormControl,
   ControlLabel,
-  InputGroup,
   DropdownButton,
   ButtonToolbar,
-  MenuItem,
 } from 'react-bootstrap';
 import actions from './actions';
 import summary from '../summary';
 import './logger.css';
 
 class LoggerModule extends React.Component {
-
   render() {
     const {
       addFood,
       summaries,
       loggerData,
+      resetLogger,
       updateLogger,
       selectedDate,
     } = this.props;
     const {
       fat,
       name,
+      meal,
       carbs,
       protein,
       calories,
-      meal,
     } = loggerData;
     const meals = ['breakfast', 'lunch', 'dinner', 'snacks'];
     return (
-      <div className="module logger-module">
+      <div className="module">
         <h3>LOG FOOD</h3>
         <div className="row-1">
           <FormGroup>
@@ -103,13 +103,16 @@ class LoggerModule extends React.Component {
           block
           bsStyle="primary"
           onClick={() => {
-            addFood({
-              fat,
-              name,
-              carbs,
-              protein,
-              calories,
-            }, selectedDate, meal, summaries);
+            if (name.length > 0) {
+              addFood({
+                fat,
+                name,
+                carbs,
+                protein,
+                calories,
+              }, selectedDate, meal, summaries);
+              resetLogger();
+            }
           }}
         >
           Add
@@ -126,15 +129,17 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  resetLogger: () => dispatch(actions.resetLogger()),
   updateLogger: (type, text, loggerData) => dispatch(actions.updateLogger(type, text, loggerData)),
   addFood: (newFood, date, meal, summaries) => dispatch(summary.actions.addFood(newFood, date, meal, summaries)),
 });
 
 LoggerModule.propTypes = {
+  addFood: PropTypes.func.isRequired,
+  summaries: PropTypes.object.isRequired,
+  resetLogger: PropTypes.func.isRequired,
   updateLogger: PropTypes.func.isRequired,
   loggerData: PropTypes.object.isRequired,
-  summaries: PropTypes.object.isRequired,
-  addFood: PropTypes.func.isRequired,
   selectedDate: PropTypes.string.isRequired,
 };
 

@@ -26,6 +26,21 @@ const updateLogger = (type, text, loggerData) => ({
   },
 });
 
+const resetLogger = () => ({
+  type: UPDATE_LOGGER,
+  payload: {
+    data: {
+      name: '',
+      fat: 0,
+      carbs: 0,
+      protein: 0,
+      calories: 0,
+      meal: 'breakfast',
+    },
+  },
+});
+
 export default {
   updateLogger,
+  resetLogger,
 };

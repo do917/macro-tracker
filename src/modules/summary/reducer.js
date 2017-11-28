@@ -1,5 +1,5 @@
 import {
-  ADD_FOOD,
+  UPDATE_FOOD,
 } from './actionTypes';
 
 
@@ -8,7 +8,7 @@ const defaultState = {
 };
 
 const reducer = (state = defaultState, action) => {
-  if (action.type === ADD_FOOD) {
+  if (action.type === UPDATE_FOOD) {
     return {
       ...state,
       data: action.payload.data,

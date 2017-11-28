@@ -1,5 +1,43 @@
 .overview {
+  display: grid;
+  grid-template-areas:
+    "calendar"
+    "logger"
+    "summary";
+}
+
+.center {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.calendar {
+  grid-area: calendar;
+}
+
+.logger {
+  grid-area: logger;
+}
+
+.summary {
+  grid-area: summary;
+}
+
+@media (min-width: 850px) {
+  .overview {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "logger summary"
+      "calendar summary";
+  }
+}
+
+@media (min-width: 1200px) {
+  .overview {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "calendar logger summary";
+  }
 }

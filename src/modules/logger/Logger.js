@@ -1,19 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import './logger.css';
 
-class Logger extends React.Component {
+class LoggerModule extends React.Component {
 
   render() {
     return (
-      <div>
-        this is Logger
+      <div className="module logger-module">
+        <h3>LOG FOOD</h3>
       </div>
     );
   }
 }
 
-Logger.propTypes = {
+const mapStateToProps = (state) => ({
+});
 
+const mapDispatchToProps = (dispatch) => ({
+});
+
+LoggerModule.propTypes = {
 };
+
+const Logger = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LoggerModule);
 
 export default Logger;

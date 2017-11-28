@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import modules from '../modules';
+import './overview.css';
 
 const {
   calendar,
@@ -15,8 +16,7 @@ const { Summary } = summary;
 class Overview extends React.Component {
   render() {
     return (
-      <div>
-        this is overview
+      <div className="overview">
         <Calendar />
         <Logger />
         <Summary />

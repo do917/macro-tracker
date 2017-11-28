@@ -1,4 +1,8 @@
-const reducer = (state = {}, action) => {
+const defaultState = {
+  summaries: [],
+};
+
+const reducer = (state = defaultState, action) => {
   return state;
 };
 

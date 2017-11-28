@@ -23,6 +23,7 @@ class CalendarModule extends React.Component {
         <div className="calendar">
           <RcCalendar          
             showDateInput={false}
+            showToday={false}
             onSelect={(d) => {
               updateSelectedDate(d.format('YYYY-MM-DD'));
             }}

@@ -2,29 +2,72 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import actions from './actions';
-import './logger.css';
 import {
   Button,
   FormGroup,
   FormControl,
   ControlLabel,
   InputGroup,
-  Well,
+  DropdownButton,
+  ButtonToolbar,
+  MenuItem,
 } from 'react-bootstrap';
+import actions from './actions';
+import summary from '../summary';
+import './logger.css';
 
 class LoggerModule extends React.Component {
 
   render() {
-    const { updateLogger, loggerData } = this.props;
+    const {
+      addFood,
+      summaries,
+      loggerData,
+      updateLogger,
+      selectedDate,
+    } = this.props;
+    const {
+      fat,
+      name,
+      carbs,
+      protein,
+      calories,
+      meal,
+    } = loggerData;
+    const meals = ['breakfast', 'lunch', 'dinner', 'snacks'];
     return (
       <div className="module logger-module">
         <h3>LOG FOOD</h3>
-        <FormGroup>
-          <ControlLabel>Name</ControlLabel>
-          <FormControl type="text" onChange={(e) => updateLogger('name', e.target.value, loggerData)} />
-        </FormGroup>
-        <div className="macros">
+        <div className="row-1">
+          <FormGroup>
+            <ControlLabel>Name</ControlLabel>
+            <FormControl
+              type="text"
+              value={name}
+              style={{ width: 240 }}
+              onChange={(e) => {
+                if (e.target.value.length < 20) {
+                  updateLogger('name', e.target.value, loggerData);
+                }
+              }}
+            />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Meal</ControlLabel>
+            <ButtonToolbar>
+              <DropdownButton title={_.capitalize(meal)} id="dropdown-size-medium" style={{ width: '100%'}}>
+                {meals.map((m) => {
+                  return (
+                    <MenuItem key={m} onClick={() => updateLogger('meal', m, loggerData)}>
+                      {_.capitalize(m)}
+                    </MenuItem>
+                  );
+                })}
+              </DropdownButton>
+            </ButtonToolbar>
+          </FormGroup>
+        </div>
+        <div className="row-2">
           {['fat', 'carbs', 'protein'].map((macro) => (
             <div className="macro" key={macro}>
               <FormGroup>
@@ -52,11 +95,23 @@ class LoggerModule extends React.Component {
           <div className="calories macro">
             <ControlLabel>Calories</ControlLabel>
             <div className="calories-text">
-              {loggerData.calories}
+              {calories}
             </div>
           </div>
         </div>
-        <Button bsStyle="primary" block>
+        <Button
+          block
+          bsStyle="primary"
+          onClick={() => {
+            addFood({
+              fat,
+              name,
+              carbs,
+              protein,
+              calories,
+            }, selectedDate, meal, summaries);
+          }}
+        >
           Add
         </Button>
       </div>
@@ -66,14 +121,21 @@ class LoggerModule extends React.Component {
 
 const mapStateToProps = (state) => ({
   loggerData: state.logger,
+  summaries: state.summary.data,
+  selectedDate: state.calendar.selectedDate,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateLogger: (type, text, loggerData) => dispatch(actions.updateLogger(type, text, loggerData)),
+  addFood: (newFood, date, meal, summaries) => dispatch(summary.actions.addFood(newFood, date, meal, summaries)),
 });
 
 LoggerModule.propTypes = {
   updateLogger: PropTypes.func.isRequired,
+  loggerData: PropTypes.object.isRequired,
+  summaries: PropTypes.object.isRequired,
+  addFood: PropTypes.func.isRequired,
+  selectedDate: PropTypes.string.isRequired,
 };
 
 const Logger = connect(

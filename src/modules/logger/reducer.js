@@ -8,6 +8,7 @@ const defaultState = {
   fat: 0,
   carbs: 0,
   protein: 0,
+  meal: 'breakfast',
 };
 
 const reducer = (state = defaultState, action) => {

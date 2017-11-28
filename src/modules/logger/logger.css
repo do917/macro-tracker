@@ -1,10 +1,15 @@
-.macros {
+.row-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row-2 {
   display: flex;
   justify-content: space-between;
 }
 
 .macro {
-  width: 80px;
+  width: 85px;
 }
 
 .calories {
@@ -15,7 +20,7 @@
 .calories-text {
   flex: 1;
   border-radius: 4px;
-  border: 2px solid #92a1af;
+  border: 1px solid #92a1af;
   margin-bottom: 16px;
   padding-left: 5px;
   font-weight: bold;

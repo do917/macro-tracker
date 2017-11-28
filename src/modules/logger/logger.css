@@ -1,3 +1,26 @@
-.logger-module {
-  width: 400px;
+.macros {
+  display: flex;
+  justify-content: space-between;
+}
+
+.macro {
+  width: 80px;
+}
+
+.calories {
+  display: flex;
+  flex-direction: column;
+}
+
+.calories-text {
+  flex: 1;
+  border-radius: 4px;
+  border: 2px solid #92a1af;
+  margin-bottom: 16px;
+  padding-left: 5px;
+  font-weight: bold;
+  box-shadow: inset 0px 1.5px 3px #d6d6d6;
+
+  display: flex;
+  align-items: center;
 }

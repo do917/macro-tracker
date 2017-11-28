@@ -1,3 +1,7 @@
+import {
+  UPDATE_LOGGER,
+} from './actionTypes';
+
 const defaultState = {
   name: '',
   calories: 0,
@@ -7,6 +11,9 @@ const defaultState = {
 };
 
 const reducer = (state = defaultState, action) => {
+  if (action.type === UPDATE_LOGGER) {
+    return action.payload.data;
+  }
   return state;
 };
 

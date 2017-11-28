@@ -11,8 +11,10 @@ h3 {
 
 .module {
   padding: 8px;
-  margin: 5px;
+  margin: 8px;
+  width: 400px;
   background-color: #f2f2f2;
-  border-radius: 5px;
-  border: 3px solid #5b5b5b;
+  border-radius: 3px;
+  border: 1px solid #5b5b5b;
+  box-shadow: 1px 1px 3px #6b7584;
 }

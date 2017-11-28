@@ -19,13 +19,15 @@ class CalendarModule extends React.Component {
 
     return (
       <div className="module calendar-module">
-        <h3>Select Date</h3>
-        <RcCalendar
-          showDateInput={false}
-          onSelect={(d) => {
-            updateSelectedDate(d.format('YYYY-MM-DD'));
-          }}
-        />
+        <h3>SELECT DATE</h3>
+        <div className="calendar">
+          <RcCalendar          
+            showDateInput={false}
+            onSelect={(d) => {
+              updateSelectedDate(d.format('YYYY-MM-DD'));
+            }}
+          />
+        </div>
       </div>
     );
   }

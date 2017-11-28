@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Macro Tracker",
+  "name": "Track your daily caloric and macro intake",
   "icons": [
     {
       "src": "favicon.ico",

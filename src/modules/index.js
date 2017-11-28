@@ -1,9 +1,9 @@
-import Calendar from './calendar';
-import Logger from './logger';
-import Summary from './summary';
+import calendar from './calendar';
+import logger from './logger';
+import summary from './summary';
 
 export default {
-  Calendar,
-  Logger,
-  Summary,
+  calendar,
+  logger,
+  summary,
 };

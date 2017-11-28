@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import modules from '../modules';
 
 const {
-  Calendar,
-  Logger,
-  Summary,
+  calendar,
+  logger,
+  summary,
 } = modules;
 
-class Overview extends React.Component {
+const { Calendar } = calendar;
+const { Logger } = logger;
+const { Summary } = summary;
 
+class Overview extends React.Component {
   render() {
     return (
       <div>

@@ -19,15 +19,20 @@ class SummaryModule extends React.Component {
     const dateInText = moment(selectedDate, 'YYYYMMDD').format('MMMM Do, YYYY');
     const summaries = summary.data[selectedDate] || {};
     const meals = ['breakfast', 'lunch', 'dinner', 'snacks'];
+    const macros = ['calories', 'fat', 'carbs', 'protein'];
     const foods = _.flatten(meals.map((m) => summaries[m] || []));
-    const calories = foods.reduce((t, f) => t + f.calories, 0);
+    const totalMacros = macros.map((macro) => {
+      return foods.reduce((t, f) => t + f[macro], 0);
+    });
+    const [calories, fat, carbs, protein] = totalMacros;
 
     return (
       <div className="module">
         <h3>REVIEW SUMMARY</h3>
         <div className="summary-overview">
           <h4>{dateInText}</h4>
-          Total Calories: {calories}
+          Total calories: {calories} <br/>
+          Total macros (F, C, P): {`(${fat}, ${carbs}, ${protein})`}
         </div>
         {meals.map((meal, i) => (
           <Meal

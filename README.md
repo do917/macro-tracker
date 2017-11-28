@@ -9,4 +9,8 @@ cd macro-tracker/
 yarn install
 yarn start
 ```
+<<<<<<< HEAD
 open http://localhost:3000/
+=======
+open http://localhost:3000/
+>>>>>>> 806aa6949da2c0d655bebe8ad333dc6f6c3c0f0b

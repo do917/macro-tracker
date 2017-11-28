@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
-const MealEntry = ({ data }) => {
+const MealEntry = ({ data, onDelete }) => {
   return (
     <tr>
       <td>
@@ -19,6 +20,11 @@ const MealEntry = ({ data }) => {
       <td>
         {data.protein}
       </td>
+      <td>
+        <Button bsSize="xsmall" onClick={onDelete}>
+          <i className="fa fa-times" aria-hidden="true"></i>
+        </Button>
+      </td>
     </tr>
   );
 };
@@ -26,6 +32,7 @@ const MealEntry = ({ data }) => {
 
 MealEntry.propTypes = {
   data: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default MealEntry;

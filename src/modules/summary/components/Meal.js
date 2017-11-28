@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { Well, Table } from 'react-bootstrap';
 import MealEntry from './MealEntry';
 
-const Meal = ({ title, mealEntries }) => {
+const Meal = ({ title, mealEntries, onDelete }) => {
   const entries = mealEntries.map((meal, i) => (
-    <MealEntry key={i} data={meal} />
+    <MealEntry key={i} data={meal} onDelete={() => onDelete(i)}/>
   ));
 
-  console.log('this is', entries.length)
   return (
     <div>
       <h5>{title}</h5>
@@ -22,7 +21,7 @@ const Meal = ({ title, mealEntries }) => {
                   food
                 </th>
                 <th style={{ width: '20%'}}>
-                  cal
+                  kcal
                 </th>
                 <th style={{ width: '15%'}}>
                   fat
@@ -49,6 +48,7 @@ const Meal = ({ title, mealEntries }) => {
 Meal.propTypes = {
   mealEntries: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Meal;
